@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django da Joana</title>
+
+    <style>
+        body{
+            background-color: rgb(204, 211, 228);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        input{
+            border-radius: 5px;
+            height: 20px;
+            width: 250px;
+        }
+
+        
+        form{
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-items: center;
+        }
+
+        #Enviar{
+            width: 60px;
+        }
+
+        #retorno{
+            background-color: rgb(242, 243, 248);
+            border-radius: 30px;
+            border: 0.5px solid rgb(95, 100, 100);
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Projeto da Joana</h1>
+    <p>Esse é meu primeiro projeto em Django, no curso do Jovem Programador.</p>
+
+
+    <!-- action="." pra onde vou mandar os dados do form ("." mesmo local do arquivo) -->
+     <!-- method="POST" método pelo qual vou enviar os dados -->
+    <form action="." method="POST">
+
+        <!-- csrf_token é para proteção de xsite_scripting -->
+        {% csrf_token %}
+
+        <label from="nome">Digite o seu nome</label>
+        <input type="text", id="nome" name="InputNome" placeholder="Nome">
+        <!-- <button type="submit">Enviar</button> (OUTRA FORMA DE CRIAR BOTÃO) -->
+
+        <label from="idade">Digite sua idade</label>
+        <input type="number" name="InputIdade" id="idade" placeholder="Digite sua idade">
+
+        <input id="Enviar" type="submit" value="Enviar"> 
+
+    </form>
+
+
+    {% if nome %}
+        <p id="retorno">Olá {{nome}}, você tem {{idade}} anos!</p>
+    {% endif %}
+
+</body>
+</html>
