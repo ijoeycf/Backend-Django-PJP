@@ -39,36 +39,42 @@
             padding: 10px;
         }
 
+        h2{
+            text-align: center;
+        }
+
+        h3{
+            text-align: center;
+        }
+
     </style>
 
 </head>
 <body>
-    <h1>Atividade</h1>
+    <h2>Atividade</h2>
 
     <div class="aula"></div>
-        <!-- action="." pra onde vou mandar os dados do form ("." mesmo local do arquivo) -->
-        <!-- method="POST" método pelo qual vou enviar os dados -->
         <form action="." method="POST">
 
-            <!-- csrf_token é para proteção de xsite_scripting -->
             {% csrf_token %}
 
-            <label from="nome">Digite o seu nome</label>
-            <input type="text", id="nome" name="InputNome" placeholder="Nome">
-            <!-- <button type="submit">Enviar</button> (OUTRA FORMA DE CRIAR BOTÃO) -->
-
-            <label from="idade">Digite sua idade</label>
-            <input type="number" name="InputIdade" id="idade" placeholder="Digite sua idade">
+            <label from="idade">Digite um número</label>
+            <input type="number" name="InputNumero" id="numero" placeholder="Digite aqui">
 
             <input class="Enviar" type="submit" value="Enviar"> 
 
         </form>
 
-        {% if nome %}
-            <p id="retorno">Olá {{nome}}, você tem {{idade}} anos!</p>
+        {% if numero %}
+            <h3>Tabuada do {{numero}}</h3>
+            <div class="tabuada">
+                {% for i in tabuada%}
+                    <p>{{i}} * {{numero}} = {{i}}</p>   
+                {% endfor %} 
         {% endif %}
-
+            </div>
     </div>
+
 
 </body>
 </html>
