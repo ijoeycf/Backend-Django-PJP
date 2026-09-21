@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora da Joana</title>
+
+
+    <style>
+
+        h1{
+            text-align: center;
+            padding: 25px;
+        }
+
+        #calculadora{
+            display: flex;
+            justify-content: center;
+        }
+
+        .campo{
+            border-radius: 8px;
+            padding: 5px;
+            background-color: rgb(248, 250, 255);
+        }
+
+        body{
+            background-color: rgb(204, 211, 228);
+        }
+
+        p{
+            text-align: center;
+            padding: 15px;
+            font-size: 40px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    
+    <h1>Calculadora da Joana</h1>
+    <div id="calculadora">
+        <form action="." method="POST">
+            {% csrf_token %}
+
+            <input class="campo" type="number" name="numero1" id="numero1" placeholder="Primeiro número" value="{{ numero1 }}">
+
+            <select class="campo" name="operador" id="operador">
+                <option value="soma">+</option>
+                <option value="subtracao">-</option>
+                <option value="divisao">/</option>
+                <option value="multiplicacao">*</option>
+            </select>
+
+            <input class="campo" type="number" name="numero2" id="numero2" placeholder="Segundo número" value="{{ numero2 }}">
+
+            <button class="campo" type="submit">=</button>
+
+            {% if resultado %}
+
+                <p>{{resultado}}</p>
+
+            {% endif %}
+        </form>
+
+    </div>
+    
+</body>
+</html>
