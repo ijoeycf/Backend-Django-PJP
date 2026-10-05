@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusão</title>
+</head>
+<body>
+    
+    <h1>Excluir produto</h1>
+
+    <p>
+        tem certeza que deseja excluir: <strong>{{ produto.nome }}</strong>?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit">
+            Sim, excluir
+        </button>
+
+    </form>
+
+    <a href="{% url 'listar' %}">
+        Cancelar
+    </a>
+
+</body>
+</html>

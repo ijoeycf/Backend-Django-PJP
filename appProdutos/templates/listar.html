@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar</title>
+</head>
+<body>
+    
+    <h1>Produtos</h1>
+
+    <a href="{% url 'criar' %}">
+        Novo produto
+    </a>
+
+    <hr>
+
+    {% for produto in produtos %}
+        <h2>{{ produto.nome }}</h2>
+
+        <p>
+            Preço: R$ {{ produto.preco }}
+        </p>
+
+        <p>Estoque: {{ produto.estoque }}</p>
+
+        <a href="{% url 'editar' produto.id %}">
+            Editar
+        </a>
+
+        <a href="{% url 'excluir' produto.id %}">
+            Excluir
+        </a>
+
+        <hr>
+
+    {% empty %}
+        <p>Nenhum produto cadastrado.</p>
+
+    {% endfor %}
+
+    </body>
+</html>

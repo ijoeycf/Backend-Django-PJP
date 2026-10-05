@@ -17,10 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from appJoana.views import sobre, atividade, calculadora
+from appProdutos.views import listar, criar, editar, excluir
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sobre/', sobre),
     path('atividade/', atividade),
-    path('calculadora/', calculadora)
+    path('calculadora/', calculadora),
+    path('', listar, name='listar'),
+    path('novo/', criar, name='criar'),
+    path('<int:id>/editar/', editar, name='editar'),
+    path('<int:id>/excluir/', excluir, name='excluir')
 ]

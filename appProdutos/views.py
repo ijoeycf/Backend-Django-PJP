@@ -9,7 +9,7 @@ from .forms import ProdutoForm
 
 def listar(request):
     produtos = Produto.objects.all() # -> Atribui os dados do model Produto, a variavel produtos
-    return render(request, 'appProdutos/listar.html', {'produtos':produtos})
+    return render(request, 'listar.html', {'produtos':produtos})
 
 
 
@@ -26,7 +26,7 @@ def criar(request):
     else:
         form = ProdutoForm()
 
-    return render(request, 'appProdutos/formulario.html', {'form': form})
+    return render(request, 'formulario.html', {'form': form})
 
 
 
@@ -35,7 +35,7 @@ def criar(request):
 def editar(request, id):
     
     produto = get_object_or_404(
-        produto,
+        Produto,
         id=id
     )
 
@@ -51,7 +51,7 @@ def editar(request, id):
             instance=produto
         )
 
-        return render(request, 'appProdutos/formulario.html', {'form':form})
+    return render(request, 'formulario.html', {'form':form})
 
 
 
@@ -59,7 +59,7 @@ def editar(request, id):
 def excluir(request, id):
 
     produto = get_object_or_404(
-        produto,
+        Produto,
         id=id
     )
 
@@ -67,4 +67,4 @@ def excluir(request, id):
         produto.delete()
         return redirect('listar')
 
-    return render(request, 'appProdutos/delete.html', {'produto':produto})
+    return render(request, 'delete.html', {'produto':produto})
