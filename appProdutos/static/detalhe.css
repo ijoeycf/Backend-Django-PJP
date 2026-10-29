@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    background-color: rgb(184, 182, 182);
+    padding: 12px;
+}
+
+
+a {
+    text-decoration: none;
+    color: rgb(253, 253, 253);
+    padding: 10px;
+    background-color: rgb(133, 134, 138);
+    border-radius: 4px;
+    margin: auto;
+}
+
+a:hover{
+    background-color: rgba(133, 134, 138, 0.521);
+}
+

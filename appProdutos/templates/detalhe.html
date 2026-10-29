@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe do produto</title>
+    <link rel="stylesheet" href="{% static 'detalhe.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <h1>
+        {{ produto.nome }}
+    </h1>
+
+    <p><strong>Preço:</strong> {{ produto.preco }}</p>
+    <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
+    <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+    <p><strong>Data de Criação:</strong> {{ produto.dataCriacao }}</p>
+
+    <a href="{% url 'listar' %}">
+        Voltar
+    </a>
+
+</body>
+</html>
+

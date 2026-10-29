@@ -15,56 +15,51 @@ def listar(request):
 
 def criar(request):
     if request.method == 'POST':
-        
         form = ProdutoForm(request.POST) # -> Atribui os dados do form ProdutoForm a variavel form
-
         if form.is_valid():
             form.save() # -> Momento que salva no banco
-
             return redirect('listar') # -> Redireciona o usuário ao template "listar"
-
     else:
         form = ProdutoForm()
-
     return render(request, 'formulario.html', {'form': form})
 
 
 
 
-
 def editar(request, id):
-    
     produto = get_object_or_404(
         Produto,
         id=id
     )
-
     if request.method == 'POST':
-
         form = ProdutoForm(request.POST, instance=produto)
-
         if form.is_valid():
             form.save()
-
     else:
         form = ProdutoForm(
             instance=produto
         )
-
     return render(request, 'formulario.html', {'form':form})
 
 
 
 
 def excluir(request, id):
-
     produto = get_object_or_404(
         Produto,
         id=id
     )
-
     if request.method == 'POST':
         produto.delete()
         return redirect('listar')
-
     return render(request, 'delete.html', {'produto':produto})
+
+
+
+def detalhe(request, id):
+    produto = get_object_or_404(Produto, id=id)
+    return render(
+        request, 
+        'detalhe.html',
+        {'produto': produto}
+    )

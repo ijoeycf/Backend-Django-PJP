@@ -1,43 +1,57 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <h1>Produtos</h1>
 
-    <a href="{% url 'criar' %}">
+    <a id="novoProduto" href="{% url 'criar' %}">
         Novo produto
     </a>
 
-    <hr>
+    <div class="produtos">
+        {% for produto in produtos %}
+        <div id="produto">
+            <h3>{{ produto.nome }}</h3>
 
-    {% for produto in produtos %}
-        <h2>{{ produto.nome }}</h2>
+            <p>
+                Preço: R$ {{ produto.preco }}
+            </p>
 
-        <p>
-            Preço: R$ {{ produto.preco }}
-        </p>
+            <p>Estoque: {{ produto.estoque }}</p>
 
-        <p>Estoque: {{ produto.estoque }}</p>
+            <div id="botao">
+                <a href="{% url 'editar' produto.id %}">
+                    Editar
+                </a>
 
-        <a href="{% url 'editar' produto.id %}">
-            Editar
-        </a>
+                <a href="{% url 'excluir' produto.id %}">
+                    Excluir
+                </a>
 
-        <a href="{% url 'excluir' produto.id %}">
-            Excluir
-        </a>
+                <a href="{% url 'detalhe' produto.id %}">
+                    Detalhes
+                </a>
+            </div>
 
-        <hr>
+        </div>
 
-    {% empty %}
-        <p>Nenhum produto cadastrado.</p>
+        
+        {% empty %}
+            <p>Nenhum produto cadastrado.</p>
 
-    {% endfor %}
+        {% endfor %}
+    </div>
 
     </body>
 </html>
